@@ -1,0 +1,28 @@
+{
+  "name": "url_shortener",
+  "version": "1.0.0",
+  "description": "Fun project to practice NodeJS",
+  "homepage": "https://github.com/Ritam369/URL-Shortener#readme",
+  "bugs": {
+    "url": "https://github.com/Ritam369/URL-Shortener/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ritam369/URL-Shortener.git"
+  },
+  "license": "ISC",
+  "author": "Ritam Saha",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
