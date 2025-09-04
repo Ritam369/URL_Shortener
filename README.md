@@ -11,7 +11,7 @@ A modern full-stack URL shortener with React frontend and Node.js backend that g
 - 💻 **Responsive Design** - Works on all devices
 - ⚡ **Fast Performance** - Optimized React frontend with Express backend
 
-<img src="./frontend/src/assets/image.png" alt="My Project" width="100%">
+<img src="./frontend/src/assets/image.jpeg" alt="My Project" width="100%">
 
 ## 🛠️ Tech Stack
 
