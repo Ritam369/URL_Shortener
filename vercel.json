@@ -29,10 +29,5 @@
   ],
   "env": {
     "MONGO_URI": "@mongo_uri"
-  },
-  "functions": {
-    "backend/index.js": {
-      "maxDuration": 30
-    }
   }
 }
