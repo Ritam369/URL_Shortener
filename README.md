@@ -138,12 +138,6 @@ npm start
 4. Get your short link and QR code
 5. Share and track clicks!
 
-## 👨‍💻 Author
-
-**[Ritam Saha](https://github.com/Ritam369)**
-
-Made with ❤️ using React and Node.js
-
 ## 🚀 Future Plans
 
 ### � Deployment & Infrastructure
@@ -178,3 +172,7 @@ Made with ❤️ using React and Node.js
 - [ ] Implement user authentication system
 - [ ] Add comprehensive analytics dashboard
 - [ ] Create API documentation 
+
+## 👨‍💻 Author
+
+Made with ❤️ using React and Node.js by **[Ritam Saha](https://github.com/Ritam369)**
