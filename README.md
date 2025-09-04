@@ -11,6 +11,8 @@ A modern full-stack URL shortener with React frontend and Node.js backend that g
 - 💻 **Responsive Design** - Works on all devices
 - ⚡ **Fast Performance** - Optimized React frontend with Express backend
 
+<img src="./frontend/src/assets/image.png" alt="My Project" width="100%">
+
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -152,19 +154,19 @@ npm start
 7. **URL Expiration** - Add expiry dates for short URLs with automatic cleanup
 
 ### 📊 Analytics & Insights
-9. **Advanced Analytics Dashboard** - Detailed click analytics with graphs and charts
-10. **Device Analytics** - Monitor clicks by device type (mobile/desktop/tablet)
+8. **Advanced Analytics Dashboard** - Detailed click analytics with graphs and charts
+9. **Device Analytics** - Monitor clicks by device type (mobile/desktop/tablet)
 
 ### 🎨 UI/UX Enhancements
-11. **Dark/Light Theme** - Toggle between dark and light mode
-12. **Mobile App** - React Native mobile application for iOS and Android
+10. **Dark/Light Theme** - Toggle between dark and light mode
+11. **Mobile App** - React Native mobile application for iOS and Android
 
 ### 🔗 Additional Features
-13. **QR Code Customization** - Allow custom colors, logos, and styles for QR codes
-14. **Link Categories** - Organize URLs into folders/categories
-15. **Team Collaboration** - Multi-user workspaces for teams
-16. **Browser Extension** - Chrome/Firefox extension for quick URL shortening
-17. **Webhook Integration** - Send notifications when URLs are clicked
+12. **QR Code Customization** - Allow custom colors, logos, and styles for QR codes
+13. **Link Categories** - Organize URLs into folders/categories
+14. **Team Collaboration** - Multi-user workspaces for teams
+15. **Browser Extension** - Chrome/Firefox extension for quick URL shortening
+16. **Webhook Integration** - Send notifications when URLs are clicked
 
 ### 🌟 Next Immediate Goals
 - [ ] Deploy to Vercel with environment variables
