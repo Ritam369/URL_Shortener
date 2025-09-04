@@ -21,7 +21,7 @@ const Footer = () => {
           <span>Click Analytics</span>
         </div>
       </div>
-      <p>&copy; 2025 URL Shortener. Made with ❤️</p>
+      <p>&copy; 2025 URL Shortener. Made with ❤️ by <a href="https://github.com/Ritam369" style={{textDecoration: 'none', color: 'inherit', fontWeight: 'bold'}} target="_blank" rel="noopener noreferrer">Ritam Saha</a></p>
     </footer>
   );
 };

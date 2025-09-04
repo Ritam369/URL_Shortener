@@ -18,16 +18,13 @@ export async function generateShortUrl(req, res) {
         let shortID;
         let isCustom = false;
 
-        // Check if custom alias is provided
         if (customAlias) {
-            // Validate custom alias (alphanumeric, hyphens, underscores only)
             if (!/^[a-zA-Z0-9_-]+$/.test(customAlias)) {
                 return res.status(400).json({ 
                     message: "Custom alias can only contain letters, numbers, hyphens, and underscores" 
                 });
             }
 
-            // Check if custom alias already exists
             const existingUrl = await url.findOne({ shortID: customAlias });
             if (existingUrl) {
                 return res.status(409).json({ message: "Custom alias already exists. Please choose another one." });
@@ -36,11 +33,9 @@ export async function generateShortUrl(req, res) {
             shortID = customAlias;
             isCustom = true;
         } else {
-            // Generate random shortID
             shortID = nanoid(8);
         }
 
-        // Check if original URL already exists
         const existingOriginalUrl = await url.findOne({ originalUrl });
         if (existingOriginalUrl) {
             const shortUrl = `${req.protocol}://${req.get("host")}/${existingOriginalUrl.shortID}`;
@@ -57,7 +52,6 @@ export async function generateShortUrl(req, res) {
             });
         }
 
-        // Create new URL entry
         const dataToSave = new url({ 
             originalUrl, 
             shortID, 
@@ -95,7 +89,6 @@ export async function redirectToUrl(req, res) {
             return res.status(404).json({ message: "URL not found" });
         }
 
-        // Increment click count
         urlEntry.clickCount += 1;
         await urlEntry.save();
 

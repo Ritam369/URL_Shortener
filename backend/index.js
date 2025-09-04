@@ -11,17 +11,14 @@ const PORT = process.env.PORT || 5000;
 
 connectDB();
 
-// Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000", "https://your-vercel-domain.vercel.app"],
+  origin: ["http://localhost:5173", "http://localhost:3000"],
   credentials: true
 }));
 app.use(express.json());
 
-// Routes
 app.use("/api", urlRouter);
 
-// Health check endpoint
 app.get("/", (req, res) => {
   res.json({ 
     message: "URL Shortener Backend API is running!",
@@ -34,7 +31,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// Handle redirect route (direct shortId access)
 app.get("/:shortId", async (req, res) => {
   try {
     const { redirectToUrl } = await import("./controllers/urlController.js");

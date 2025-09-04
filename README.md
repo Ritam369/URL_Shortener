@@ -1,18 +1,34 @@
-# URL Shortener with QR Code Generator
+# URL Shortener
 
-A modern, full-stack URL shortener with React frontend and Node.js backend that generates QR codes and supports custom aliases. Designed for easy deployment on Vercel.
+A modern full-stack URL shortener with React frontend and Node.js backend that generates QR codes and supports custom aliases.
 
 ## ✨ Features
 
-- 🔗 **Shorten URLs** - Convert long URLs into short, shareable links
-- 🎨 **Custom Aliases** - Users can create personalized short links
+- 🔗 **URL Shortening** - Convert long URLs into short, shareable links
+- 🎨 **Custom Aliases** - Create personalized short links
 - 📱 **QR Code Generation** - Automatic QR code creation for each short URL
-- 📊 **Click Analytics** - Track how many times each link has been clicked
-- 💻 **Modern React Frontend** - Responsive design with smooth animations
-- ⚡ **Fast Backend API** - Node.js with Express and MongoDB
-- 🌐 **Easy Deployment** - Optimized for Vercel deployment
+- 📊 **Click Analytics** - Track clicks with timestamps
+- 💻 **Responsive Design** - Works on all devices
+- ⚡ **Fast Performance** - Optimized React frontend with Express backend
 
-## 🏗️ Project Structure
+## 🛠️ Tech Stack
+
+### Frontend
+- **React** - UI library
+- **Vite** - Build tool and dev server
+- **Axios** - HTTP client
+- **CSS3** - Modern styling with gradients
+- **FontAwesome** - Icons
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web framework
+- **MongoDB** - Database
+- **Mongoose** - ODM for MongoDB
+- **QRCode** - QR code generation
+- **Nanoid** - Short ID generation
+
+## 📁 Project Structure
 
 ```
 URL-Shortener/
@@ -33,25 +49,23 @@ URL-Shortener/
 ├── frontend/                   # React application
 │   ├── src/
 │   │   ├── components/       # React components
-│   │   ├── App.jsx           # Main App component
-│   │   └── main.jsx          # Entry point
-│   ├── public/               # Static assets
-│   ├── package.json          # Frontend dependencies
-│   └── vite.config.js        # Vite configuration
-├── vercel.json               # Vercel deployment config
-├── package.json              # Root package.json
-└── README.md                 # This file
+│   │   ├── utils/           # Utility functions
+│   │   ├── App.jsx          # Main App component
+│   │   └── main.jsx         # Entry point
+│   ├── index.html           # HTML template
+│   ├── package.json         # Frontend dependencies
+│   └── vite.config.js       # Vite configuration
+├── package.json             # Root package.json
+└── .gitignore              # Git ignore file
 ```
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
-
 - Node.js 18+ installed
 - MongoDB Atlas account (free tier available)
-- Vercel account for deployment (optional)
 
-### Local Development
+### Installation
 
 1. **Clone the repository**
    ```bash
@@ -59,177 +73,40 @@ URL-Shortener/
    cd URL-Shortener
    ```
 
-2. **Install all dependencies**
+2. **Install dependencies**
    ```bash
    npm run install-all
    ```
-   
-   Or install separately:
-   ```bash
-   npm run install-backend
-   npm run install-frontend
-   ```
 
 3. **Set up environment variables**
-   ```bash
-   cp backend/.env.example backend/.env
-   ```
-   
-   Edit `backend/.env` and add your MongoDB connection string:
-   ```
-   MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/url-shortener
+   Create `backend/.env` file:
+   ```env
    PORT=5000
+   MONGO_URI=your_mongodb_connection_string
    ```
 
-4. **Start both servers**
+4. **Start development servers**
    ```bash
    npm run dev
    ```
-   
-   Or start them separately:
-   ```bash
-   # Terminal 1 - Backend
-   npm run dev-backend
-   
-   # Terminal 2 - Frontend
-   npm run dev-frontend
-   ```
 
-5. **Open your browser**
-   - Frontend: `http://localhost:5173`
-   - Backend API: `http://localhost:5000`
+   This starts both:
+   - Frontend: http://localhost:5173
+   - Backend: http://localhost:5000
 
-## 📱 API Endpoints
-
-### POST `/api/shorten`
-Create a short URL with optional custom alias
-
-**Request Body:**
-```json
-{
-  "originalUrl": "https://example.com/very-long-url",
-  "customAlias": "my-link" // optional
-}
-```
-
-**Response:**
-```json
-{
-  "message": "Short URL created successfully",
-  "shortUrl": "https://yoursite.com/my-link",
-  "qrCode": "data:image/png;base64,...",
-  "originalUrl": "https://example.com/very-long-url",
-  "shortID": "my-link",
-  "isCustom": true,
-  "createdAt": "2025-01-01T00:00:00.000Z",
-  "clickCount": 0
-}
-```
-
-### GET `/:shortId`
-Redirect to original URL and increment click count
-
-### GET `/api/stats/:shortId`
-Get statistics for a short URL
-
-## 🌐 Deploy to Vercel
-
-### Method 1: One-Click Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Ritam369/URL-Shortener)
-
-### Method 2: Manual Deployment
-
-1. **Install Vercel CLI**
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Login to Vercel**
-   ```bash
-   vercel login
-   ```
-
-3. **Deploy**
-   ```bash
-   vercel
-   ```
-
-4. **Set Environment Variables**
-   In your Vercel dashboard:
-   - Go to your project settings
-   - Add environment variable: `MONGO_URI` with your MongoDB connection string
-
-### Method 3: GitHub Integration
-
-1. **Fork this repository**
-2. **Connect GitHub to Vercel**
-3. **Import your forked repository**
-4. **Add environment variables** in the Vercel dashboard
-5. **Deploy automatically** on every push to main branch
-
-## 🔧 Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `MONGO_URI` | MongoDB Atlas connection string | Yes |
-| `PORT` | Backend port (auto-set by Vercel) | No |
-
-## �️ Technology Stack
-
-### Backend
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework
-- **MongoDB** - Database
-- **Mongoose** - ODM for MongoDB
-- **QRCode** - QR code generation
-- **Nanoid** - Short ID generation
-- **CORS** - Cross-origin resource sharing
-
-### Frontend
-- **React** - UI library
-- **Vite** - Build tool and dev server
-- **Axios** - HTTP client
-- **CSS3** - Modern styling with gradients and animations
-- **FontAwesome** - Icons
-
-### Deployment
-- **Vercel** - Hosting platform
-- **GitHub** - Version control
-
-## 🎨 Features in Detail
-
-### 🔗 Custom Aliases
-Users can create personalized short links like `yoursite.com/my-company` instead of random characters.
-
-### 📱 QR Code Generation
-Every short URL automatically gets a high-quality QR code that users can download and use for offline sharing.
-
-### 📊 Click Analytics
-Track how many times each short URL has been clicked with detailed statistics and creation timestamps.
-
-### 💻 Responsive Design
-The React frontend adapts beautifully to different screen sizes, from mobile phones to desktop computers.
-
-### ⚡ Modern Architecture
-- **Separation of Concerns**: Clean separation between frontend and backend
-- **RESTful API**: Well-designed API endpoints
-- **Component-Based**: Modular React components for maintainability
-- **Development Proxy**: Seamless development experience with Vite proxy
-
-## 🚀 Development Scripts
+## 📝 Available Scripts
 
 ```bash
-# Install all dependencies
+# Install all dependencies (frontend + backend)
 npm run install-all
 
-# Start both frontend and backend in development mode
+# Start both servers in development mode
 npm run dev
 
-# Start only backend
+# Start only backend server
 npm run dev-backend
 
-# Start only frontend
+# Start only frontend server
 npm run dev-frontend
 
 # Build frontend for production
@@ -239,39 +116,32 @@ npm run build
 npm start
 ```
 
-## 🔒 Security Features
+## 🔧 Environment Setup
 
-- URL validation to prevent malicious links
-- Custom alias validation (alphanumeric, hyphens, underscores only)
-- CORS protection with configurable origins
-- Input sanitization and validation
-- MongoDB injection protection with Mongoose
+### MongoDB Atlas
+1. Create account at [mongodb.com/atlas](https://www.mongodb.com/atlas)
+2. Create a cluster (free tier available)
+3. Create database user and get connection string
+4. Add connection string to `backend/.env`
 
-## 🤝 Contributing
+## 📱 API Endpoints
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+- `POST /api/shorten` - Create short URL
+- `GET /api/stats/:shortId` - Get URL statistics
+- `GET /:shortId` - Redirect to original URL
 
-## 📝 License
+## 🎨 Usage
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+1. Enter a long URL in the input field
+2. Optionally add a custom alias
+3. Click "Shorten URL"
+4. Get your short link and QR code
+5. Share and track clicks!
 
 ## 👨‍💻 Author
 
-**Ritam Saha**
-- GitHub: [@Ritam369](https://github.com/Ritam369)
-
-## 🙏 Acknowledgments
-
-- Thanks to the React and Node.js communities
-- MongoDB Atlas for providing free database hosting
-- Vercel for seamless deployment platform
-- FontAwesome for beautiful icons
+**[Ritam Saha](https://github.com/Ritam369)**
 
 ---
 
-Made with ❤️ by [Ritam Saha](https://github.com/Ritam369)
-# Deployment trigger
+Made with ❤️ using React and Node.js

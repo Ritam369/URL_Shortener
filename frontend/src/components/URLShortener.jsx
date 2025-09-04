@@ -10,8 +10,6 @@ import Footer from './Footer';
 import './URLShortener.css';
 
 const URLShortener = () => {
-  console.log('URLShortener component is rendering');
-  
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
@@ -33,7 +31,7 @@ const URLShortener = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        timeout: 10000, // 10 second timeout
+        timeout: 10000,
       });
 
       setResult(response.data);

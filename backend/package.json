@@ -1,14 +1,11 @@
 {
   "name": "url-shortener-backend",
   "version": "1.0.0",
-  "description": "Backend for URL shortener with QR code generation",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "build": "echo 'No build step required'"
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "dotenv": "^17.2.1",
@@ -21,7 +18,5 @@
   "devDependencies": {
     "nodemon": "^3.1.10"
   },
-  "keywords": ["url-shortener", "qr-code", "node.js", "express"],
-  "author": "Ritam Saha",
-  "license": "ISC"
+  "author": "Ritam Saha"
 }

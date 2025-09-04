@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Header = () => {
-  console.log('Header component is rendering');
-  
   return (
     <header className="header">
       <div className="logo">

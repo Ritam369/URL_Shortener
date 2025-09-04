@@ -1,7 +1,6 @@
 {
   "name": "url-shortener-fullstack",
   "version": "1.0.0",
-  "description": "Full-stack URL shortener with React frontend and Node.js backend",
   "type": "module",
   "scripts": {
     "install-all": "npm run install-backend && npm run install-frontend",
@@ -11,21 +10,10 @@
     "dev-backend": "cd backend && npm run dev",
     "dev-frontend": "cd frontend && npm run dev",
     "start": "cd backend && npm start",
-    "build": "cd frontend && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd frontend && npm run build"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
   },
-  "keywords": ["url-shortener", "qr-code", "react", "node.js", "express", "mongodb"],
-  "author": "Ritam Saha",
-  "license": "ISC",
-  "homepage": "https://github.com/Ritam369/URL-Shortener#readme",
-  "bugs": {
-    "url": "https://github.com/Ritam369/URL-Shortener/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ritam369/URL-Shortener.git"
-  }
+  "author": "Ritam Saha"
 }

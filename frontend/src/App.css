@@ -1,7 +1,5 @@
-/* Import FontAwesome */
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 
-/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
