@@ -1,7 +1,25 @@
 {
-  "name": "url_shortener",
+  "name": "url-shortener-fullstack",
   "version": "1.0.0",
-  "description": "Fun project to practice NodeJS",
+  "description": "Full-stack URL shortener with React frontend and Node.js backend",
+  "type": "module",
+  "scripts": {
+    "install-all": "npm run install-backend && npm run install-frontend",
+    "install-backend": "cd backend && npm install",
+    "install-frontend": "cd frontend && npm install",
+    "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\"",
+    "dev-backend": "cd backend && npm run dev",
+    "dev-frontend": "cd frontend && npm run dev",
+    "start": "cd backend && npm start",
+    "build": "cd frontend && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "keywords": ["url-shortener", "qr-code", "react", "node.js", "express", "mongodb"],
+  "author": "Ritam Saha",
+  "license": "ISC",
   "homepage": "https://github.com/Ritam369/URL-Shortener#readme",
   "bugs": {
     "url": "https://github.com/Ritam369/URL-Shortener/issues"
@@ -9,22 +27,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ritam369/URL-Shortener.git"
-  },
-  "license": "ISC",
-  "author": "Ritam Saha",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
-  },
-  "dependencies": {
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0",
-    "mongoose": "^8.18.0",
-    "nanoid": "^5.1.5"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
   }
 }
