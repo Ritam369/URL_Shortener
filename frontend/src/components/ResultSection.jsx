@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ResultSection = ({ result, onReset }) => {
+const ResultSection = ({ result, onReset, onViewStats }) => {
   const [copySuccess, setCopySuccess] = useState(false);
 
   const copyToClipboard = async () => {
@@ -95,6 +95,16 @@ const ResultSection = ({ result, onReset }) => {
             <i className="fas fa-plus"></i>
             Create Another
           </button>
+          
+          {onViewStats && (
+            <button 
+              className="view-stats-btn" 
+              onClick={() => onViewStats(result.shortID)}
+            >
+              <i className="fas fa-chart-line"></i>
+              View Detailed Stats
+            </button>
+          )}
         </div>
       </div>
     </div>

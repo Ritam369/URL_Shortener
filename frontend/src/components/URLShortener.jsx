@@ -6,6 +6,7 @@ import URLForm from './URLForm';
 import LoadingSpinner from './LoadingSpinner';
 import ResultSection from './ResultSection';
 import ErrorSection from './ErrorSection';
+import StatsLookup from './StatsLookup';
 import Footer from './Footer';
 import './URLShortener.css';
 
@@ -13,6 +14,7 @@ const URLShortener = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState('shorten'); // 'shorten' or 'stats'
 
   const API_BASE_URL = getApiBaseUrl();
 
@@ -59,28 +61,66 @@ const URLShortener = () => {
     setError(null);
   };
 
+  const switchTab = (tab) => {
+    setActiveTab(tab);
+    resetForm();
+  };
+
+  const handleViewStats = (shortId) => {
+    setActiveTab('stats');
+    // The StatsLookup component will handle the shortId
+    // We could pass it as a prop if needed
+  };
+
   return (
     <div className="url-shortener">
       <div className="container">
         <Header />
         
+        {/* Tab Navigation */}
+        <div className="tab-navigation">
+          <button 
+            className={`tab-btn ${activeTab === 'shorten' ? 'active' : ''}`}
+            onClick={() => switchTab('shorten')}
+          >
+            <i className="fas fa-magic"></i>
+            Shorten URL
+          </button>
+          <button 
+            className={`tab-btn ${activeTab === 'stats' ? 'active' : ''}`}
+            onClick={() => switchTab('stats')}
+          >
+            <i className="fas fa-chart-line"></i>
+            View Statistics
+          </button>
+        </div>
+        
         <main className="main-content">
-          <URLForm onSubmit={shortenUrl} loading={loading} />
-          
-          {loading && <LoadingSpinner />}
-          
-          {result && (
-            <ResultSection 
-              result={result} 
-              onReset={resetForm}
-            />
+          {activeTab === 'shorten' && (
+            <>
+              <URLForm onSubmit={shortenUrl} loading={loading} />
+              
+              {loading && <LoadingSpinner />}
+              
+              {result && (
+                <ResultSection 
+                  result={result} 
+                  onReset={resetForm}
+                  onViewStats={handleViewStats}
+                />
+              )}
+              
+              {error && (
+                <ErrorSection 
+                  message={error} 
+                  onRetry={resetForm}
+                />
+              )}
+            </>
           )}
-          
-          {error && (
-            <ErrorSection 
-              message={error} 
-              onRetry={resetForm}
-            />
+
+          {activeTab === 'stats' && (
+            <StatsLookup />
           )}
         </main>
 
