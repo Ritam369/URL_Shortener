@@ -3,6 +3,16 @@ import QRCode from "qrcode";
 import url from "../models/url.js";
 import validateUrl from "../services/urlValidation.js";
 
+// Helper function to get base URL based on environment
+const getBaseUrl = (req) => {
+    if (process.env.NODE_ENV === 'production') {
+        // Use environment variable for production
+        return process.env.FRONTEND_URL || `${req.protocol}://${req.get("host")}`;
+    }
+    // Development - use the request host
+    return `${req.protocol}://${req.get("host")}`;
+};
+
 export async function generateShortUrl(req, res) {
     try {
         const { originalUrl, customAlias } = req.body;
@@ -38,7 +48,8 @@ export async function generateShortUrl(req, res) {
 
         const existingOriginalUrl = await url.findOne({ originalUrl });
         if (existingOriginalUrl) {
-            const shortUrl = `${req.protocol}://${req.get("host")}/${existingOriginalUrl.shortID}`;
+            const baseUrl = getBaseUrl(req);
+            const shortUrl = `${baseUrl}/${existingOriginalUrl.shortID}`;
             const qrCodeDataUrl = await QRCode.toDataURL(shortUrl);
             
             return res.status(200).json({ 
@@ -61,7 +72,8 @@ export async function generateShortUrl(req, res) {
         
         await dataToSave.save();
 
-        const shortUrl = `${req.protocol}://${req.get("host")}/${shortID}`;
+        const baseUrl = getBaseUrl(req);
+        const shortUrl = `${baseUrl}/${shortID}`;
         const qrCodeDataUrl = await QRCode.toDataURL(shortUrl);
 
         res.status(201).json({ 

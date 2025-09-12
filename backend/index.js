@@ -9,12 +9,23 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Connect to MongoDB
 connectDB();
 
+// CORS configuration - allow both development and production origins
+const allowedOrigins = [
+  "http://localhost:5173", 
+  "http://localhost:3000",
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3000"],
+  origin: process.env.NODE_ENV === 'production' 
+    ? [process.env.FRONTEND_URL] 
+    : ["http://localhost:5173", "http://localhost:3000"],
   credentials: true
 }));
+
 app.use(express.json());
 
 app.use("/api", urlRouter);
@@ -41,6 +52,12 @@ app.get("/:shortId", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Backend server is running on port ${PORT}`);
-});
+// For Vercel serverless deployment
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Backend server is running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel
+export default app;
