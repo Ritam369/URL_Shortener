@@ -294,6 +294,7 @@
 
 .alias-input-container {
   display: flex;
+  padding-left: 25px;
   align-items: center;
   border: 2px solid var(--gray-200);
   border-radius: var(--radius-lg);

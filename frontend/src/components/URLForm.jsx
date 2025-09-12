@@ -71,7 +71,7 @@ const URLForm = ({ onSubmit, loading }) => {
         <div className="input-group">
           <label htmlFor="customAlias">Custom alias (optional)</label>
           <div className="alias-input-container">
-            <span className="domain-preview">{domainPreview}</span>
+            {/* <span className="domain-preview">{domainPreview}</span> */}
             <input
               type="text"
               id="customAlias"
