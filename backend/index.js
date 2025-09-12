@@ -12,18 +12,11 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 connectDB();
 
-// CORS configuration - allow both development and production origins
-const allowedOrigins = [
-  "http://localhost:5173", 
-  "http://localhost:3000",
-  process.env.FRONTEND_URL
-].filter(Boolean);
-
+// CORS configuration - allow all origins and methods
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL] 
-    : ["http://localhost:5173", "http://localhost:3000"],
-  credentials: true
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'PATCH'], // Allow all methods
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 app.use(express.json());
