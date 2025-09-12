@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { getApiBaseUrl } from '../utils/config';
+import { getApiBaseUrl, getShortUrlDomain } from '../utils/config';
 
 const StatsLookup = () => {
   const [shortId, setShortId] = useState('');
@@ -9,6 +9,7 @@ const StatsLookup = () => {
   const [error, setError] = useState(null);
 
   const API_BASE_URL = getApiBaseUrl();
+  const SHORT_URL_DOMAIN = getShortUrlDomain();
 
   const fetchStats = async (e) => {
     e.preventDefault();
@@ -109,7 +110,7 @@ const StatsLookup = () => {
             id="shortId"
             value={shortId}
             onChange={(e) => setShortId(e.target.value)}
-            placeholder="e.g., abc123 or http://localhost:5000/abc123"
+            placeholder={`e.g., abc123 or ${SHORT_URL_DOMAIN}/abc123`}
             disabled={loading}
           />
           <small className="help-text">
@@ -240,7 +241,7 @@ const StatsLookup = () => {
             <div className="stats-actions-bottom">
               <button 
                 className="view-url-btn"
-                onClick={() => window.open(`http://localhost:5000/${stats.shortID}`, '_blank')}
+                onClick={() => window.open(`${SHORT_URL_DOMAIN}/${stats.shortID}`, '_blank')}
               >
                 <i className="fas fa-external-link-alt"></i>
                 Visit Short URL
